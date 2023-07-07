@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-onready var GuyScene = preload("res://Guy.tscn")
+onready var GuyScene = preload("res://scenes/Guy.tscn")
 
 var GUY_DISTANCE = 12.5
 var CLUSTER_SPEED = 500
@@ -18,9 +18,8 @@ var input_up = false
 var input_enter = false
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	var guy_count = 100
+	var guy_count = 10
 	var guy_row_length = int(sqrt(guy_count))
 	for i in range(guy_count):
 		var guy = GuyScene.instance()
@@ -36,6 +35,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	# input
 	if Input.is_action_pressed("ui_right"):
 		if not input_right:
 			move_guys(Vector2(1, 0))
@@ -80,28 +80,34 @@ func _physics_process(delta):
 		if input_enter:
 			pass # released
 		input_enter = false
-		
-		
-		
+
 	# velocity = (velocity*MOVEMENT_INERTIA + movement_velocity) / (MOVEMENT_INERTIA+1)
-	
 	# move_and_slide(velocity)
-	var guys_pos = Vector2(0, 0)
-	for guy in guys:
-		guys_pos += guy.global_position
-	guys_pos = guys_pos / guys.size()
 	
-	var pos_delta: Vector2 = guys_pos - global_position
-	if pos_delta.length() > 20:
-		pos_delta = pos_delta.normalized() * 20
-	# position += pos_delta
+	# dispose of dead guys
+	for guy_index in range(guys.size()-1, -1, -1):
+		var guy = guys[guy_index]
+		if guy.dispose:
+			guys.remove(guy_index)
+			remove_child(guy)
 	
-	var before_pos = position
-	move_and_slide(pos_delta/delta)
-	var real_delta_pos = position - before_pos
-	
-	for guy in guys:
-		guy.position -= real_delta_pos
+	# move cluster to guys center of mass
+	if guys.size() > 0:
+		var guys_pos = Vector2(0, 0)
+		for guy in guys:
+			guys_pos += guy.global_position
+		guys_pos = guys_pos / guys.size()
+		
+		var pos_delta: Vector2 = guys_pos - global_position
+		if pos_delta.length() > 20:
+			pos_delta = pos_delta.normalized() * 20
+		
+		var before_pos = position
+		move_and_slide(pos_delta/delta)
+		var real_delta_pos = position - before_pos
+		
+		for guy in guys:
+			guy.position -= real_delta_pos
 		
 
 func move_guys(direction: Vector2):
@@ -116,3 +122,13 @@ func add_movement(velocity: Vector2):
 func gather():
 	for guy in guys:
 		guy.position = Vector2(0, 0)
+
+func dead():
+	return guys.size() == 0
+
+func count_winners():
+	var count = 0
+	for guy in guys:
+		if guy.won:
+			count += 1
+	return count
