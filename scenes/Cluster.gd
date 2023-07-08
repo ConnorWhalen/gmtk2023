@@ -15,7 +15,7 @@ var input_right = false
 var input_left = false
 var input_down = false
 var input_up = false
-var input_enter = false
+var input_enter = true
 
 var gather_cooldown = false
 
