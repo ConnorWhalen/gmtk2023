@@ -35,18 +35,21 @@ func _physics_process(delta):
 			if collision.collider.is_in_group("Bullet"):
 				collision.collider.hit()
 				hit()
+	if dead:
+		animation_float += delta
+		$DeadIcon.frame = int(min(animation_float / 0.25, 11.0))
+		
 
 func add_movement(velocity: Vector2):
 	movement_velocity += velocity
 
 func hit():
+	animation_float = 0.0
 	dead = true
 	$Icon.visible = false
+	$DeadIcon.frame = 0
 	$DeadIcon.visible = true
-	$DeathTimer.start()
+	
 
 func win():
 	won = true
-
-func _on_DeathTimer_timeout():
-	dispose = true

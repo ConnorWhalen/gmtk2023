@@ -18,7 +18,7 @@ func _ready():
 
 
 func _process(delta):
-	$Camera2D.position = $Cluster.position
+	$Camera2D.position = $Cluster.center_of_mass
 	
 	if $Cluster.dead():
 		lose()
@@ -58,4 +58,3 @@ func _on_WinTimer_timeout():
 	set_save($Cluster.count_winners(), true)
 	
 	$EndTimer.start()
-

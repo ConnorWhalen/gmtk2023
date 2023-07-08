@@ -10,6 +10,7 @@ var MOVEMENT_INERTIA = 20
 var guys = []
 var movement_velocity = Vector2(0, 0)
 var velocity = Vector2(0, 0)
+var center_of_mass = Vector2(0, 0)
 
 var input_right = false
 var input_left = false
@@ -24,9 +25,6 @@ func _ready():
 	pass
 
 func init(guy_count):
-	if guy_count == 0:
-		guy_count = 10
-	
 	var guy_row_length = int(sqrt(guy_count))
 	for i in range(guy_count):
 		var guy = GuyScene.instance()
@@ -39,7 +37,6 @@ func init(guy_count):
 		
 		guys.append(guy)
 		add_child(guy)
-
 
 func _physics_process(delta):
 	# input
@@ -91,31 +88,16 @@ func _physics_process(delta):
 	# velocity = (velocity*MOVEMENT_INERTIA + movement_velocity) / (MOVEMENT_INERTIA+1)
 	# move_and_slide(velocity)
 	
-	# dispose of dead guys
-	for guy_index in range(guys.size()-1, -1, -1):
-		var guy = guys[guy_index]
-		if guy.dispose:
-			guys.remove(guy_index)
-			remove_child(guy)
-	
 	# move cluster to guys center of mass
 	if guys.size() > 0:
 		var guys_pos = Vector2(0, 0)
+		var alive_count = 0
 		for guy in guys:
-			guys_pos += guy.global_position
-		guys_pos = guys_pos / guys.size()
-		
-		var pos_delta: Vector2 = guys_pos - global_position
-		if pos_delta.length() > 20:
-			pos_delta = pos_delta.normalized() * 20
-		
-		var before_pos = position
-		move_and_slide(pos_delta/delta)
-		var real_delta_pos = position - before_pos
-		
-		for guy in guys:
-			guy.position -= real_delta_pos
-		
+			if not guy.dead:
+				guys_pos += guy.global_position
+				alive_count += 1
+		center_of_mass = guys_pos / alive_count
+
 
 func move_guys(direction: Vector2):
 	add_movement(direction * CLUSTER_SPEED)
@@ -126,21 +108,28 @@ func move_guys(direction: Vector2):
 func add_movement(velocity: Vector2):
 	movement_velocity += velocity
 
+
 func gather():
 	if not gather_cooldown:
 		for guy in guys:
-			guy.position = Vector2(0, 0)
+			if not guy.dead:
+				guy.position = Vector2(0, 0)
 		gather_cooldown = true
 		$GatherTimer.start()
-		
+
 
 func dead():
-	return guys.size() == 0
+	var alive_count = 0
+	for guy in guys:
+		if not guy.dead:
+			alive_count += 1
+	return alive_count == 0
+
 
 func count_winners():
 	var count = 0
 	for guy in guys:
-		if guy.won:
+		if guy.won and not guy.dead:
 			count += 1
 	return count
 
