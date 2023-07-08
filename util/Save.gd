@@ -15,8 +15,8 @@ var defaults = {
 	"stages_complete": 0
 }
 var save_override = {
-	"score": 100,
-	"stages_complete": 0
+	"score": 60,
+	"stages_complete": 4
 }
 
 func _ready():
@@ -47,6 +47,7 @@ func pull_stats():
 			save_stats_tmp[key] = save_override[key]
 		save_data = save_stats_tmp
 		push_stats()
+		SAVE_OVERRIDE = false
 
 	return save_stats_tmp
 
