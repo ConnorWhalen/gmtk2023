@@ -17,6 +17,8 @@ var input_down = false
 var input_up = false
 var input_enter = false
 
+var gather_cooldown = false
+
 
 func _ready():
 	pass
@@ -125,8 +127,12 @@ func add_movement(velocity: Vector2):
 	movement_velocity += velocity
 
 func gather():
-	for guy in guys:
-		guy.position = Vector2(0, 0)
+	if not gather_cooldown:
+		for guy in guys:
+			guy.position = Vector2(0, 0)
+		gather_cooldown = true
+		$GatherTimer.start()
+		
 
 func dead():
 	return guys.size() == 0
@@ -137,3 +143,13 @@ func count_winners():
 		if guy.won:
 			count += 1
 	return count
+
+
+func _on_GatherTimer_timeout():
+	gather_cooldown = false
+	for _i in range(2):
+		visible = false
+		yield(get_tree().create_timer(0.1, false), "timeout")
+		visible = true
+		yield(get_tree().create_timer(0.1, false), "timeout")
+	
