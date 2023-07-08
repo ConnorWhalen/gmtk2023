@@ -113,7 +113,7 @@ func gather():
 	if not gather_cooldown:
 		for guy in guys:
 			if not guy.dead:
-				guy.position = Vector2(0, 0)
+				guy.position = center_of_mass
 		gather_cooldown = true
 		$GatherTimer.start()
 

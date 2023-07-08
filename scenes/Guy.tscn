@@ -2,12 +2,10 @@
 
 [ext_resource path="res://scenes/Guy.gd" type="Script" id=1]
 [ext_resource path="res://assets/cuteLittleGuy.png" type="Texture" id=2]
+[ext_resource path="res://assets/death.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.5
-
-[sub_resource type="StreamTexture" id=2]
-load_path = "res://.import/cuteLittleGuy.png-e3320835d9497826c7bfee56650f10f0.stex"
 
 [node name="Guy" type="KinematicBody2D" groups=["Guy"]]
 collision_layer = 2
@@ -25,11 +23,10 @@ vframes = 2
 
 [node name="DeadIcon" type="Sprite" parent="."]
 visible = false
-modulate = Color( 1, 0.423529, 0, 1 )
-scale = Vector2( 0.4, 0.4 )
-texture = SubResource( 2 )
-hframes = 2
-vframes = 2
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+hframes = 3
+vframes = 4
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.25
