@@ -12,10 +12,11 @@ enum STAT_INDEX {
 var save_data
 var defaults = {
 	"score": 100,
+	"high_score": 0,
 	"stages_complete": 0
 }
 var save_override = {
-	"score": 60,
+	"score": 100,
 	"stages_complete": 4
 }
 
