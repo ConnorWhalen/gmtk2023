@@ -8,6 +8,7 @@ export(int) var win_area_w = 100
 export(int) var win_area_h = 100
 
 var keeping_score = true
+var game_complete = false
 
 func _ready():
 	var save_stats = Save.pull_stats()
@@ -44,10 +45,12 @@ func set_save(score, stage_won):
 		save_stats["stages_complete"] = 0
 	Save.save_data = save_stats
 	Save.push_stats()
+	
+	return save_stats["stages_complete"] == 5
 
 
 func _on_EndTimer_timeout():
-	emit_signal("exit_stage")
+	emit_signal("exit_stage", game_complete)
 
 
 func _on_WinTimer_timeout():
@@ -55,7 +58,8 @@ func _on_WinTimer_timeout():
 	
 	keeping_score = false
 	
-	set_save($Cluster.count_winners(), true)
+	if set_save($Cluster.count_winners(), true):
+		game_complete = true
 	
 	$EndTimer.start()
 

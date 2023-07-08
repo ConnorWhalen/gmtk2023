@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Cousine/Cousine-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -35,6 +39,33 @@ margin_bottom = 574.0
 rect_pivot_offset = Vector2( 306, 82 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighScoreLabel" type="Label" parent="."]
+visible = false
+margin_left = 657.0
+margin_top = 536.0
+margin_right = 924.0
+margin_bottom = 573.0
+rect_pivot_offset = Vector2( 549, 82 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "HIGH SCORE: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighScoreLabel2" type="Label" parent="."]
+visible = false
+margin_left = 876.0
+margin_top = 536.0
+margin_right = 987.0
+margin_bottom = 572.0
+rect_pivot_offset = Vector2( 549, 82 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

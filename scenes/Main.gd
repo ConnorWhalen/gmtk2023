@@ -3,20 +3,20 @@ extends Node2D
 enum Mode {
 	MENU,
 	STAGE,
-	UPGRADE,
+	WIN,
 	HOWTO,
 	OPTIONS
 }
 
 signal mode_menu
 signal mode_stage
-signal mode_upgrade
+signal mode_win
 signal mode_howto
 signal mode_options
 
 onready var menu_scene = preload("res://scenes/Menu.tscn")
 onready var howto_scene = preload("res://scenes/HowTo.tscn")
-#onready var upgrade_scene = preload("res://scenes/Upgrade.tscn")
+onready var win_scene = preload("res://scenes/WinScreen.tscn")
 #onready var options_scene = preload("res://scenes/options.tscn")
 
 onready var stage1_scene = preload("res://scenes/Stage1.tscn")
@@ -45,15 +45,15 @@ func set_mode(mode_id, stage_number=0):
 			current_mode = stages[stage_number].instance()
 		Mode.HOWTO:
 			current_mode = howto_scene.instance()
-#		Mode.UPGRADE:
-#			current_mode = upgrade_scene.instance()
+		Mode.WIN:
+			current_mode = win_scene.instance()
 #		Mode.OPTIONS:
 #			current_mode = options_scene.instance()
 		
 	add_child(current_mode)
 	current_mode.connect("mode_menu", self, "set_mode_menu")
 	current_mode.connect("mode_stage", self, "set_mode_stage")
-	current_mode.connect("mode_upgrade", self, "set_mode_upgrade")
+	current_mode.connect("mode_win", self, "set_mode_win")
 	current_mode.connect("mode_howto", self, "set_mode_howto")
 	current_mode.connect("mode_options", self, "set_mode_options")
 
@@ -64,8 +64,8 @@ func set_mode_menu():
 func set_mode_stage(number):
 	set_mode(Mode.STAGE, number)
 
-func set_mode_upgrade():
-	set_mode(Mode.UPGRADE)
+func set_mode_win():
+	set_mode(Mode.WIN)
 
 func set_mode_howto():
 	set_mode(Mode.HOWTO)
