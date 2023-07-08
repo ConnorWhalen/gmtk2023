@@ -15,8 +15,8 @@ signal mode_howto
 signal mode_options
 
 onready var menu_scene = preload("res://scenes/Menu.tscn")
+onready var howto_scene = preload("res://scenes/HowTo.tscn")
 #onready var upgrade_scene = preload("res://scenes/Upgrade.tscn")
-#onready var howto_scene = preload("res://scenes/HowTo.tscn")
 #onready var options_scene = preload("res://scenes/options.tscn")
 
 onready var stage1_scene = preload("res://scenes/Stage1.tscn")
@@ -43,10 +43,10 @@ func set_mode(mode_id, stage_number=0):
 			current_mode = menu_scene.instance()
 		Mode.STAGE:
 			current_mode = stages[stage_number].instance()
+		Mode.HOWTO:
+			current_mode = howto_scene.instance()
 #		Mode.UPGRADE:
 #			current_mode = upgrade_scene.instance()
-#		Mode.HOWTO:
-#			current_mode = howto_scene.instance()
 #		Mode.OPTIONS:
 #			current_mode = options_scene.instance()
 		

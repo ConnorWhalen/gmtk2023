@@ -1,6 +1,7 @@
 extends Node2D
 
 signal mode_stage
+signal mode_howto
 
 var score
 var stages_complete
@@ -22,3 +23,11 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("ui_accept"):
 		emit_signal("mode_stage", stages_complete)
+
+
+func _on_PlayButton_pressed():
+	emit_signal("mode_stage", stages_complete)
+
+
+func _on_HowToButton_pressed():
+	emit_signal("mode_howto")
