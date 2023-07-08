@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/StageCommon.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Cluster.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/CenteredLabel.gd" type="Script" id=3]
+[ext_resource path="res://assets/Cousine/Cousine-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://scenes/WinArea.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=5]
+size = 512
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 256
+font_data = ExtResource( 5 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 700, 700 )
+
+[node name="StageCommon" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Cluster" parent="." instance=ExtResource( 2 )]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 2, 2 )
+process_mode = 0
+
+[node name="ScoreLabel" type="Label" parent="Camera2D"]
+visible = false
+anchor_right = 200.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 5 )
+text = "3"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoseLabel" type="Label" parent="Camera2D"]
+visible = false
+anchor_right = 200.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 6 )
+text = "GAME OVER"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="WinArea" type="Area2D" parent="." groups=["WinArea"]]
+position = Vector2( -1570, -2121 )
+collision_layer = 16
+collision_mask = 10
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
+shape = SubResource( 7 )
+
+[node name="WinTimer" type="Timer" parent="WinArea"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="EndTimer" to="." method="_on_EndTimer_timeout"]
+[connection signal="body_entered" from="WinArea" to="WinArea" method="_on_WinArea_body_entered"]
+[connection signal="timeout" from="WinArea/WinTimer" to="." method="_on_WinTimer_timeout"]

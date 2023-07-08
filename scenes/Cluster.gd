@@ -19,7 +19,12 @@ var input_enter = false
 
 
 func _ready():
-	var guy_count = 10
+	pass
+
+func init(guy_count):
+	if guy_count == 0:
+		guy_count = 10
+	
 	var guy_row_length = int(sqrt(guy_count))
 	for i in range(guy_count):
 		var guy = GuyScene.instance()
