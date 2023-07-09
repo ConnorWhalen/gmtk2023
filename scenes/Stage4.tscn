@@ -187,20 +187,17 @@ interval = 4.0
 [node name="Enemy5" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1895, -2602 )
 interval = 4.0
-shoot_directions = 6
 
 [node name="Enemy6" parent="." instance=ExtResource( 3 )]
 position = Vector2( 698, -2200 )
 interval = 5.0
-shoot_directions = 6
 
 [node name="Enemy7" parent="." instance=ExtResource( 3 )]
 position = Vector2( -381, -2663 )
 interval = 4.0
-shoot_directions = 6
 
 [node name="Enemy8" parent="." instance=ExtResource( 3 )]
-position = Vector2( -481, -1046 )
+position = Vector2( -481, -1045 )
 interval = 3.0
 
 [node name="Enemy9" parent="." instance=ExtResource( 3 )]

@@ -175,37 +175,30 @@ tile_data = PoolIntArray( -4390957, 1, 7, -4390956, 1, 2, -4390955, 1, 2, -43909
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2596, -863 )
 interval = 3.5
-shoot_directions = 7
 
 [node name="Enemy2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 608, -1051 )
 interval = 3.5
-shoot_directions = 7
 
 [node name="Enemy3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1794, -2618 )
 interval = 3.5
-shoot_directions = 7
 
 [node name="Enemy4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 3259, -2205 )
 interval = 3.5
-shoot_directions = 7
 
 [node name="Enemy5" parent="." instance=ExtResource( 3 )]
 position = Vector2( -127, -2173 )
 interval = 3.5
-shoot_directions = 7
 
 [node name="Enemy7" parent="." instance=ExtResource( 3 )]
 position = Vector2( -1847, -13 )
 interval = 3.5
-shoot_directions = 7
 
 [node name="Enemy6" parent="." instance=ExtResource( 3 )]
 position = Vector2( -1868, -2072 )
 interval = 3.5
-shoot_directions = 7
 
 [node name="StageCommon" parent="." instance=ExtResource( 4 )]
 win_area_x = -1000

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Stage.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/StageCommon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/tiles.png" type="Texture" id=5]
+[ext_resource path="res://scenes/GunTwo.tscn" type="PackedScene" id=6]
 
 [sub_resource type="TileSet" id=3]
 0/name = "tiles.png 0"
@@ -175,22 +176,18 @@ tile_data = PoolIntArray( -4390957, 1, 7, -4390956, 1, 2, -4390955, 1, 2, -43909
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2596, -863 )
 interval = 4.0
-shoot_directions = 6
-
-[node name="Enemy2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 608, -1051 )
-interval = 4.0
-shoot_directions = 6
 
 [node name="Enemy3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1534, -2740 )
 interval = 4.0
-shoot_directions = 6
 
 [node name="StageCommon" parent="." instance=ExtResource( 4 )]
 win_area_x = -1570
 win_area_y = -2121
 win_area_w = 700
 win_area_h = 700
+
+[node name="GunTwo" parent="." instance=ExtResource( 6 )]
+position = Vector2( 612, -1003 )
 
 [connection signal="exit_stage" from="StageCommon" to="." method="_on_StageCommon_exit_stage"]
