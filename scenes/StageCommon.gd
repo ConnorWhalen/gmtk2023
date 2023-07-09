@@ -29,12 +29,8 @@ func _process(delta):
 
 
 func lose():
-	$Camera2D/LoseLabel.visible = true
-	
-	set_save(10, false)
-	
-	$EndTimer.start()
-
+	set_save(100, false)
+	emit_signal("exit_stage", game_complete)
 
 func set_save(score, stage_won):
 	var save_stats = Save.pull_stats()

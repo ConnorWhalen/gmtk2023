@@ -57,7 +57,7 @@ __meta__ = {
 }
 
 [node name="EndTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
 one_shot = true
 
 [node name="WinArea" type="Area2D" parent="." groups=["WinArea"]]
@@ -70,7 +70,7 @@ script = ExtResource( 6 )
 shape = SubResource( 7 )
 
 [node name="WinTimer" type="Timer" parent="WinArea"]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
