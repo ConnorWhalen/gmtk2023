@@ -15,3 +15,6 @@ func _physics_process(delta):
 
 func hit():
 	collided = true
+
+func kill():
+	hit()
