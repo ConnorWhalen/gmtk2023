@@ -8,10 +8,9 @@ func _ready():
 
 
 func _physics_process(delta):
-	move_and_slide(velocity)
-	
+	position += velocity * delta
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 
 func hit():
-	collided = true
+	pass

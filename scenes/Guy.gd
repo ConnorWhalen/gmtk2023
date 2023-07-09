@@ -71,6 +71,7 @@ func hit():
 	$Icon.visible = false
 	$DeadIcon.frame = 0
 	$DeadIcon.visible = true
+	$CollisionShape2D.disabled = true
 	
 
 func win():

@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var BulletScene = preload("res://scenes/Bullet.tscn")
+onready var BulletScene = preload("res://scenes/BigBullet.tscn")
 
 export(float) var interval = 0.75
 
