@@ -24,4 +24,4 @@ func _on_WinArea_body_entered(body):
 		if not started:
 			win()
 	if body.is_in_group("Bullet"):
-		body.hit()
+		body.kill()
