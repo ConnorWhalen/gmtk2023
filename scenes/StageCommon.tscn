@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/StageCommon.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Cluster.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/CenteredLabel.gd" type="Script" id=3]
+[ext_resource path="res://assets/gmtk2023.mp3" type="AudioStream" id=4]
 [ext_resource path="res://assets/Cousine/Cousine-Bold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://scenes/WinArea.gd" type="Script" id=6]
 
@@ -71,6 +72,10 @@ shape = SubResource( 7 )
 [node name="WinTimer" type="Timer" parent="WinArea"]
 wait_time = 3.0
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
 
 [connection signal="timeout" from="Cluster/GatherTimer" to="Cluster" method="_on_GatherTimer_timeout"]
 [connection signal="timeout" from="EndTimer" to="." method="_on_EndTimer_timeout"]

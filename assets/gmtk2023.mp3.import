@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/gmtk2023.mp3-82b1284d447169201be8e47a6a059f30.mp3str"
+
+[deps]
+
+source_file="res://assets/gmtk2023.mp3"
+dest_files=[ "res://.import/gmtk2023.mp3-82b1284d447169201be8e47a6a059f30.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
