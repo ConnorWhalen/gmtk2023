@@ -2,7 +2,7 @@ extends Node
 
 var SAVE_FILE_NAME = "user://save_file.save"
 
-var SAVE_OVERRIDE = false
+var SAVE_OVERRIDE = true
 
 enum STAT_INDEX {
 	SCORE = 0,
@@ -17,7 +17,7 @@ var defaults = {
 }
 var save_override = {
 	"score": 100,
-	"stages_complete": 1
+	"stages_complete": 0
 }
 
 func _ready():

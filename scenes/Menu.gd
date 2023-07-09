@@ -10,6 +10,10 @@ var stages_complete
 var input_debounce = true
 
 func _ready():
+	init()
+
+
+func init():
 	var save_stats = Save.pull_stats()
 	score = save_stats["score"]
 	high_score = save_stats["high_score"]
@@ -43,3 +47,8 @@ func _on_PlayButton_pressed():
 
 func _on_HowToButton_pressed():
 	emit_signal("mode_howto")
+
+
+func _on_ResetButton_pressed():
+	Save.reset_stats()
+	init()
