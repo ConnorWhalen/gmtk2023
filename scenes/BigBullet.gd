@@ -11,6 +11,10 @@ func _physics_process(delta):
 	position += velocity * delta
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
+		
+	if (global_position.x > 6000 or global_position.x < -3000 or 
+		global_position.y > 2000 or global_position.y < -5000):
+		collided = true
 
 func hit():
 	pass
