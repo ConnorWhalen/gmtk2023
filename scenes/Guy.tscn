@@ -1,8 +1,21 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/Guy.gd" type="Script" id=1]
 [ext_resource path="res://assets/cuteLittleGuy.png" type="Texture" id=2]
 [ext_resource path="res://assets/death.png" type="Texture" id=3]
+[ext_resource path="res://assets/SFX/gmtk2023_1#01.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/SFX/gmtk2023_1#03.15.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/SFX/gmtk2023_1#03.18.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/SFX/gmtk2023_1#03.12.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/SFX/gmtk2023_1#03.7.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/SFX/gmtk2023_1#03.3.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/SFX/gmtk2023_1#03.11.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/SFX/gmtk2023_1#05.5cheer.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/SFX/gmtk2023_1#07.3cheer.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/SFX/gmtk2023_1#05.3cheer.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/SFX/gmtk2023_1#07.4cheer.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/SFX/gmtk2023_1#05.6cheer.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/SFX/gmtk2023_1#07.2cheer.wav" type="AudioStream" id=16]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.5
@@ -31,5 +44,57 @@ vframes = 4
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="SFXPlayer0" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -6.0
+
+[node name="SFXPlayer1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -6.0
+
+[node name="SFXPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -6.0
+
+[node name="SFXPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -6.0
+
+[node name="SFXPlayer4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -6.0
+
+[node name="SFXPlayer5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -6.0
+
+[node name="SFXPlayer6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -6.0
+
+[node name="SFXCheerPlayer0" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -15.0
+
+[node name="SFXCheerPlayer1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -15.0
+
+[node name="SFXCheerPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -15.0
+
+[node name="SFXCheerPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -15.0
+
+[node name="SFXCheerPlayer4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -15.0
+
+[node name="SFXCheerPlayer5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -15.0
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

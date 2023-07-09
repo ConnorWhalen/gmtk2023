@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/gmtk2023_1#03.15.wav-c8a99da6a5cafdeccd010cdbb7c8a711.sample"
+
+[deps]
+
+source_file="res://assets/SFX/gmtk2023_1#03.15.wav"
+dest_files=[ "res://.import/gmtk2023_1#03.15.wav-c8a99da6a5cafdeccd010cdbb7c8a711.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

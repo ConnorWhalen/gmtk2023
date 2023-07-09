@@ -17,7 +17,7 @@ var defaults = {
 }
 var save_override = {
 	"score": 100,
-	"stages_complete": 4
+	"stages_complete": 1
 }
 
 func _ready():

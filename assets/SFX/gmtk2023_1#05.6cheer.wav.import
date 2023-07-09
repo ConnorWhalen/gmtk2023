@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/gmtk2023_1#05.6cheer.wav-e1e377b16b65c880bb8b9fc61de552b2.sample"
+
+[deps]
+
+source_file="res://assets/SFX/gmtk2023_1#05.6cheer.wav"
+dest_files=[ "res://.import/gmtk2023_1#05.6cheer.wav-e1e377b16b65c880bb8b9fc61de552b2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
