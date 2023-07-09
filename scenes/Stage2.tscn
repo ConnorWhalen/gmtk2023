@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Stage.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/StageCommon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/tiles.png" type="Texture" id=5]
 [ext_resource path="res://scenes/GunTwo.tscn" type="PackedScene" id=6]
@@ -180,11 +181,19 @@ win_area_h = 700
 
 [node name="GunTwo" parent="." instance=ExtResource( 6 )]
 position = Vector2( 612, -1003 )
-
-[node name="GunTwo2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2589, -754 )
+interval = 1.5
 
 [node name="GunTwo3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1412, -2699 )
+interval = 1.5
+
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2597, -731 )
+interval = 4.0
+
+[node name="Enemy2" parent="." instance=ExtResource( 3 )]
+modulate = Color( 0.0313726, 1, 0, 1 )
+position = Vector2( 3086, -1841 )
+interval = 2.0
 
 [connection signal="exit_stage" from="StageCommon" to="." method="_on_StageCommon_exit_stage"]
