@@ -42,7 +42,6 @@ func set_target(inTarget: Vector2):
 	target = inTarget
 
 func _on_ShootTimer_timeout():
-	print("Hi")
 	animation_float = 0.0
 	$ShootTimer.wait_time = interval
 	$ShootTimer.one_shot = false
