@@ -11,7 +11,7 @@ func _ready():
 func _process(delta):
 	var GunTwos = get_tree().get_nodes_in_group("GunTwo")
 	for gunTwo in GunTwos:
-		gunTwo.set_target($StageCommon/Cluster.center_of_mass)
+		gunTwo.set_target($StageCommon/Cluster.center_of_mass_position, $StageCommon/Cluster.center_of_mass_velocity)
 
 func _on_StageCommon_exit_stage(game_complete):
 	if game_complete:

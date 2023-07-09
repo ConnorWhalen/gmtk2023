@@ -19,7 +19,7 @@ func _ready():
 
 
 func _process(delta):
-	$Camera2D.position = $Cluster.center_of_mass
+	$Camera2D.position = $Cluster.center_of_mass_position
 	
 	if $Cluster.dead():
 		lose()

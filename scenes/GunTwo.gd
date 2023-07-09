@@ -7,7 +7,8 @@ export(float) var interval = 0.75
 var BULLET_SPEED = 300
 var animation_float = 3.0
 var shoot_ready = true
-var target = Vector2(0.0, 0.0)
+var targetPosition = Vector2(0.0, 0.0)
+var targetVelocity = Vector2(0.0, 0.0)
 
 var bullets = []
 
@@ -16,7 +17,9 @@ func _ready():
 	$ShootTimer.start()
 
 func _process(delta):
-	$Icon.rotation = atan2(position.y - target.y, position.x - target.x) - PI / 2
+	var targetDistance = Vector2(position.y - targetPosition.y, position.x - targetPosition.x).length()
+	var predictedTarget = Vector2(targetPosition.x + targetVelocity.x/500.0 * targetDistance, targetPosition.y + targetVelocity.y/500.0 * targetDistance)
+	$Icon.rotation = atan2(position.y - predictedTarget.y, position.x - predictedTarget.x) - PI / 2
 	animation_float += delta * 10.0
 	$Icon.frame = int(min(animation_float, 3.0))
 	if ($Icon.frame == 2) and shoot_ready:
@@ -38,8 +41,9 @@ func shoot():
 	bullets.append(bullet)
 	add_child(bullet)
 
-func set_target(inTarget: Vector2):
-	target = inTarget
+func set_target(inTargetPosition: Vector2, inTargetVelocity: Vector2):
+	targetPosition = inTargetPosition
+	targetVelocity = inTargetVelocity
 
 func _on_ShootTimer_timeout():
 	animation_float = 0.0

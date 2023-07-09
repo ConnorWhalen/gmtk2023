@@ -10,7 +10,8 @@ var MOVEMENT_INERTIA = 20
 var guys = []
 var movement_velocity = Vector2(0, 0)
 var velocity = Vector2(0, 0)
-var center_of_mass = Vector2(0, 0)
+var center_of_mass_position = Vector2(0, 0)
+var center_of_mass_velocity = Vector2(0, 0)
 
 var input_right = false
 var input_left = false
@@ -96,7 +97,9 @@ func _physics_process(delta):
 			if not guy.dead:
 				guys_pos += guy.global_position
 				alive_count += 1
-		center_of_mass = guys_pos / alive_count
+		var new_center_of_mass_position = guys_pos / alive_count
+		center_of_mass_velocity = (new_center_of_mass_position - center_of_mass_position) / delta
+		center_of_mass_position = guys_pos / alive_count
 
 
 func move_guys(direction: Vector2):
@@ -113,7 +116,7 @@ func gather():
 	if not gather_cooldown:
 		for guy in guys:
 			if not guy.dead:
-				guy.position = center_of_mass
+				guy.position = center_of_mass_position
 		gather_cooldown = true
 		$GatherTimer.start()
 
